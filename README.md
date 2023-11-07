@@ -1,19 +1,17 @@
-# SQL-challenge-1-Data_In_Motion
-
 ##SQL Case Study 1: Tiny Shop Sales – Data in Motion (d-i-motion.com)
-![image](https://github.com/Sowbarniga-Devi/SQL-challenge-1-Data_In_Motion/assets/148177720/b58b9570-a903-47b8-a45f-54a5d95f30d5)
+
 ###Sales analysis of a tiny store in PostgreSQL
 
 1) Which product has the highest price? Only return a single row.
 
-	SELECT *
-	FROM products
-	ORDER BY price DESC
-	LIMIT 1
+	#SELECT *
+	#FROM products
+	#ORDER BY price DESC
+	#LIMIT 1
 --------------------------------------------------------------------------------------------------
 2) Which customer has made the most orders?
 
-With order_total as
+**With order_total as
 (
 SELECT customer_id,count(order_id) total_orders,
 	rank() OVER (ORDER BY count(order_id) desc) 
@@ -22,7 +20,7 @@ GROUP BY 1
 ORDER BY 2 DESC
 )
 SELECT A.customer_id,A.first_name,A.last_name,B.total_orders
-FROM customers A
+FROM customers A**
 JOIN order_total B
 ON A.customer_id = B.customer_id
 WHERE rank =1
